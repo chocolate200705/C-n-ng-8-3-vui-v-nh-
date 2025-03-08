@@ -1,0 +1,142 @@
+﻿
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Chuc mung ngay 8/3</title>
+    <link type="text/css" rel="stylesheet" href="./asset/style.css">
+    <script type="text/javascript" src="./asset/jquery.min.js"></script>
+    <script type="text/javascript" src="./asset/jscex.min.js"></script>
+    <script type="text/javascript" src="./asset/jscex-parser.js"></script>
+    <script type="text/javascript" src="./asset/jscex-jit.js"></script>
+    <script type="text/javascript" src="./asset/jscex-builderbase.min.js"></script>
+    <script type="text/javascript" src="./asset/jscex-async.min.js"></script>
+    <script type="text/javascript" src="./asset/jscex-async-powerpack.min.js"></script>
+    <script type="text/javascript" src="./asset/functions.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./asset/love.js" charset="utf-8"></script>
+</head>
+
+<body>
+    
+    <div id="main">
+        <div id="wrap">
+            <div id="text" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">
+                <div id="code">
+                    <font color="#000"><span class="say">Chúc cậu 8/3 vui vẻ nheee... Đến tận bây giờ tới mới chúc vì cái này làm nó qaa lâu :<<. Thông cảm cho tớ nhé ! </span><br>
+                        <span class="say"> </span><br>
+                        <span class="say">Cô nương của tớ dù có là ai, đang ở đâu, tớ đều nhớ tới cậu và gửi các cậu bức thư siêu siêu cute này chứ hong phải tớ im lặng đâu, một ngày hong nhắn là tớ bức rức với khó chịu lắm...:<.</span><br>
+                        <span class="say">8/3 này, tớ chúc cậu mãi xinh đẹp, đáng yêu, luôn hạnh phúc bên gia đình cậu nhé. Luôn gặp may mắn trong cuộc sống và vui vẻ mọi lúc mọi nơi. Nụ cười của cậu còn sáng hơn ánh mặt trời nữa (tại răng cậu đẹp qaa mà:>).</span><br>
+                        <span class="say">Chúc cậu ngày 8/3 thật vui vẻ và tràn đầy sự xinh đẹp cùng với nhiều yêu thương nhất. </span><br>
+                        <span class="say"><span class="space"><img width="100px" height="100px" src="image/tym.png" alt=""><br>
+                        <span class="say"><span class="space"></span> -- From Ngọc Ân with love ! -- </span>
+                    </font>
+                    </p>
+                </div>
+            </div>
+            <canvas id="canvas" width="1100" height="680"></canvas>
+        </div>
+
+    </div>
+
+    <audio id="myAudio" autoplay="autoplay">
+        <source src="music/nhac.mp3" type="audio/mp3" />
+    </audio>
+
+</body>
+<script src="./asset/script.js"></script>
+
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treelove</title>
+    <style>
+        #image-container {
+            display: flex;
+            justify-content: center; /* Căn giữa hàng ngang */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            gap: 20px; /* Khoảng cách giữa các ảnh */
+            margin-top: 20px; /* Khoảng cách phía trên */
+            flex-wrap: nowrap; /* Ngăn ảnh xuống dòng */
+        }
+
+        #image-container img {
+            width: 100px; /* Kích thước ảnh */
+            height: 100px;
+            opacity: 0; /* Ẩn ban đầu */
+            transition: opacity 0.5s ease-in; /* Hiệu ứng mờ dần */
+            object-fit: cover; /* Đảm bảo ảnh không bị méo */
+        }
+
+        #image-container img.visible {
+            opacity: 1; /* Hiển thị khi có class visible */
+        }
+    </style>
+</head>
+<body>
+    <!-- Container để hiển thị ảnh -->
+    <div id="image-container"></div>
+
+    <!-- Thư viện jQuery (có thể cần cho các phần khác của dự án) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Danh sách các ảnh (đường dẫn tương đối từ vị trí index.html)
+        const images = [
+            'Image_1.jpg',  // Vì ảnh nằm cùng thư mục với index.html
+            'Image_2.jpg',
+            'Image_3.jpg',
+            'Image_4.jpg',
+            'Image_5.jpg',
+            'Image_6.jpg',
+            'Image_7.jpg',
+            'Image_8.jpg',
+            'Image_9.jpg',
+            'Image_10.jpg',
+            'Image_11.jpg',
+            'Image_12.jpg',
+            'Image_13.jpg'
+        ];
+
+        // Hàm để chèn và hiển thị ảnh lần lượt
+        function displayImagesSequentially() {
+            const container = document.getElementById('image-container');
+            
+            // Tạo các thẻ img và thêm vào container
+            images.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `Image ${index + 1}`;
+                
+                // Thêm sự kiện onerror để kiểm tra lỗi tải ảnh
+                img.onerror = () => {
+                    console.error(`Không thể tải ảnh: ${src}`);
+                };
+                
+                img.onload = () => {
+                    console.log(`Ảnh đã tải thành công: ${src}`);
+                };
+                
+                container.appendChild(img);
+
+                // Hiển thị ảnh lần lượt với độ trễ 0.5 giây
+                setTimeout(() => {
+                    img.classList.add('visible');
+                }, index * 500); // 500ms = 0.5 giây
+            });
+        }
+
+        // Hiển thị ảnh ngay khi trang tải xong
+        $(document).ready(function() {
+            displayImagesSequentially();
+        });
+    </script>
+</body>
+</html>	
+
+
